@@ -1,0 +1,177 @@
+<!--index.wxml-->
+<view class="home">
+<!-- <view class='loginOut' bindtap="loginOut"><view><text>退出</text><image src='../../images/loginOut.png'></image></view></view> -->
+	<view class="titleList displayFlex">
+		<view class="list flex1" bindtap='showEditName'>
+			<view class="name">{{userinfo.userName}}</view>
+			<view class="value">{{userinfo.userType}}</view>
+		</view>
+		<view class="list flex1">
+			<navigator url="../balance/balance" hover-class=' '>
+				<view class="name">余额</view>
+				<view class="value">{{userinfo.balanceTotal}}</view>
+			</navigator>
+		</view>
+		<view class="list flex1">
+
+			<navigator url="../orderList/orderList" hover-class=' '>
+				<view class="name">订单{{filter.UTCTransformYMD(100)}}</view>
+				<view class="value">{{userinfo.orderTotal}}</view>
+			</navigator>
+
+		</view>
+	</view>
+
+	<view class="timeSelect ">
+		<view class="name">预定</view>
+		<view class="timeWrap">
+			<scroll-view class="scroll-view_x" scroll-x>
+				<view class="time {{index==activeData?'active':''}}" wx:for="{{dataList}}" wx:key="{{index}}" bindtap='selectTime' data-time="{{item}}"
+				 data-index="{{index}}">{{filter.UTCTransformMD(item)}} <text class="borderBottom"></text></view>
+			</scroll-view>
+		</view>
+	</view>
+
+	<view class="menuListWrap displayFlex">
+		<block wx:for="{{allMenuList}}" wx:key="{{index}}" wx:if="{{index==activeData}}">
+			<view class="classList">
+				<!-- 左侧菜单 -->
+				<scroll-view scroll-y style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+					<view class="list {{index==activeIndex?'active':''}}" wx:for="{{item.dataList}}" wx:for-item="leftItme" wx:key="{{leftItme.categoryGuid}}"
+					 bindtap='selectClass' data-index="{{index}}">
+						<image src='{{index==activeIndex?"../../images/foodTypeActive.png":"../../images/foodType.png"}}'></image>
+						<view class="name">
+							{{leftItme.categoryName}}
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="menuList flex1">
+				<!--右侧菜单  -->
+				<scroll-view scroll-y style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
+				 scroll-top="{{scrollTop}}">
+					<view class="listTitle displayFlex">
+						<image src='../../images/message.png'></image>
+            <!-- 2019-11-01T01:00:00Z -->
+						<!-- <text class="flex">{{filter.UTCTransformMDHM('2019-11-01T01:00+08:00')}}前可预定</text> -->
+						<text class="flex">{{filter.UTCTransformMDHM(item.dataList[activeIndex].bookingDeadline)}}前可预定</text>
+            <!-- <view>{{filter.compare(item.dataList[activeIndex].bookingDeadline)}}-{{timestamp}}</view> -->
+					</view>
+					<view class="list displayFlex" wx:for="{{item.dataList[activeIndex].menuDishes}}" wx:for-item="rightItme" wx:key="{{rightItme.dishesGuid}}">
+						<view class="img" bindtap='showMenuDetails' data-index="{{index}}">
+							<image src='{{rightItme.dishesImg}}'></image>
+						</view>
+						<view class="details flex1">
+							<view class="title">{{rightItme.dishesName}}</view>
+							<view class="text line1">{{rightItme.dishesDescription}}</view>
+							<view class="priceWrap displayFlex">
+								<view class="price flex1">
+									￥{{filter.toFix(rightItme.dishesPrice)}}
+								</view>
+								<view class="operationWrap displayFlex" wx:if="{{filter.compare(item.dataList[activeIndex].bookingDeadline) > timestamp}}">
+									<view class="minus" bindtap='minusShop' data-activeData="{{activeData}}" data-activeIndex="{{activeIndex}}"
+									 data-index="{{index}}" data-shopNumber="{{rightItme.shopNumber}}">
+										<image src='../../images/minus.png'></image>
+									</view>
+									<view class="number">{{rightItme.shopNumber}}</view>
+									<view class="add" bindtap='addShop' data-activeData="{{activeData}}" data-activeIndex="{{activeIndex}}"
+									 data-index="{{index}}" data-shopNumber="{{rightItme.shopNumber}}">
+										<image src='../../images/adds.png'></image>
+									</view>
+                  
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</block>
+	</view>
+  
+	<!-- 底部商品列表 -->
+	<view class="shoppingListWrap" wx:if="{{showShoppingList}}">
+		<view class="shoppingListMainMask" bindtap='changeShoppingList' catchtouchmove="preventTouchMove"></view>
+		<!-- 购物车列表 -->
+		<view class="shoppingListMain" wx:if="{{showType==1}}">
+			<view class="listTitle">购物车</view>
+			<view class="listWrap">
+				<block wx:for="{{storageAllMenuList}}" wx:key="{{index}}" wx:for-item="item" wx:for-index="index">
+					<block wx:for="{{item.dataList}}" wx:key="{{leftIndex}}" wx:for-item="leftItem" wx:for-index="leftIndex">
+						<block wx:for="{{leftItem.menuDishes}}" wx:for-index="rightIndex" wx:key="{{rightIndex}}" wx:for-item="rightItem"
+						 wx:if="{{rightItem.shopNumber>0}}">
+							<view class="shoppingList">
+								<view class="list displayFlex">
+									<view class="name flex1">
+										<view class="dishesName"> {{rightItem.dishesName}}</view>
+										<view class="timeWrap displayFlex">
+											<view class="time">{{filter.UTCTransformMD(rightItem.repastTime)}}</view>
+											<view class="type">{{leftItem.categoryName}}</view>
+										</view>
+									</view>
+									<view class="price">￥{{rightItem.dishesPrice}}</view>
+									<view class="operationWrap displayFlex justify-end">
+										<view class="minus" bindtap='minusShop' data-activeData="{{index}}" data-activeIndex="{{leftIndex}}"
+										 data-index="{{rightIndex}}" data-shopNumber="{{rightItem.shopNumber}}">
+											<image class="img" src='../../images/minus.png'></image>
+										</view>
+										<view class="number">{{rightItem.shopNumber}}</view>
+										<view class="add" bindtap='addShop' data-activeData="{{index}}" data-activeIndex="{{leftIndex}}" data-index="{{rightIndex}}"
+										 data-shopNumber="{{rightItem.shopNumber}}">
+											{{rightItme}}
+											<image class="img" src='../../images/adds.png'></image>
+										</view>
+									</view>
+								</view>
+							</view>
+						</block>
+					</block>
+				</block>
+			</view>
+		</view>
+		<!-- 商品详情 -->
+		<view class="commodityDetails" wx:if="{{showType==2}}">
+			<image class="closeImg" src='../../images/close.png' bindtap='showMenuDetails'></image>
+			<image class="mianImg" src="{{allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].dishesImg}}"></image>
+			<view class="name">{{allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].dishesName}}</view>
+			<view class="Details">{{allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].dishesDescription}}</view>
+			<view class="price">￥{{filter.toFix(allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].dishesPrice)}}</view>
+			<view class="operationWrap displayFlex justify-content"  wx:if="{{filter.compare(allMenuList[activeData].dataList[activeIndex].bookingDeadline) > timestamp}}">
+				<view class="minus" bindtap='popPpMinusShop' data-activeData="{{activeData}}" data-activeIndex="{{activeIndex}}"
+				 data-index="{{index}}" data-shopNumber="{{allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].shopNumber}}">
+					<image src='../../images/minus.png'></image>
+				</view>
+				<view class="number">{{allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].shopNumber}}</view>
+				<view class="add" bindtap='popUpAddShop' data-activeData="{{activeData}}" data-activeIndex="{{activeIndex}}"
+				 data-index="{{index}}" data-shopNumber="{{allMenuList[activeData].dataList[activeIndex].menuDishes[activeNameIndex].shopNumber}}">
+					<image src='../../images/adds.png'></image>
+				</view>
+			</view>
+		</view>
+		<!-- 编辑姓名 -->
+		<view class="editName" wx:if="{{showType==3}}">
+    <view class='top'>
+    	<view class="title" bindtap="loginOut"><image src='../../images/loginOut.png'></image>退出登录</view>
+			<image class="closeImg" src='../../images/close.png' bindtap='showMenuDetails'></image>
+    </view>
+			<view class="inputWrap">
+      <text>设置姓名</text>
+				<input placeholder="请输入姓名" placeholder-class="placeholder" data-name="editUserName" value='{{editUserName}}'
+				 bindinput="inputgetName"/>
+			</view>
+			<button plain size="default" hover-class="other-button-hover" bindtap='editName' class="editNameButton">
+				确认
+			</button>
+		</view>
+	</view>
+	<view class="shoppingTrolley">
+		<view class="wrap displayFlex">
+			<view class="img" bindtap='changeShoppingList'>
+				<image src='../../images/shopping.png'></image>
+			</view>
+			<view class="allPrice flex1">￥{{filter.shoppTotalPrices(allMenuList)}}</view>
+			<view class="settleAccounts" bindtap='goSettle'>去结算</view>
+		</view>
+	</view>
+</view>
+<!-- 导入过滤器 -->
+<wxs module="filter" src="../../utils/filter/filter.wxs"></wxs>

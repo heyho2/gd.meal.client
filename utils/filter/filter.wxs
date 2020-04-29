@@ -1,0 +1,134 @@
+//过滤器模板
+function UTCTransformYMDHMS(value) { //年月日时分秒
+  var Time = getDate(value)
+  var Seconds = Time.getSeconds() > 9 ? Time.getSeconds() : "0" + Time.getSeconds()
+  var Minutes = Time.getMinutes() > 9 ? Time.getMinutes() : "0" + Time.getMinutes()
+  var Hours = Time.getHours() > 9 ? Time.getHours() : "0" + Time.getHours()
+  var Day = Time.getDate() > 9 ? Time.getDate() : "0" + Time.getDate()
+  var Month = (Time.getMonth() + 1) > 9 ? Time.getMonth() + 1 : "0" + (Time.getMonth() + 1)
+  return Time.getFullYear() + "-" + Month + "-" + Day +"  " +Hours + ":" + Minutes + ":" + Seconds
+}
+
+//过滤器模板
+function UTCTransformHM(value) { //年月日时分秒
+  var Time = getDate(value)
+  var Minutes = Time.getMinutes() > 9 ? Time.getMinutes() : "0" + Time.getMinutes()
+  var Hours = Time.getHours() > 9 ? Time.getHours() : "0" + Time.getHours()
+  return  Hours + ":" + Minutes 
+}
+//价格保留两位小数
+function toFix(value) {
+  // console.log(value);
+  if(!value){
+    return 0;
+  }
+  return value.toFixed(2) // 此处2为保留两位小数，保留几位小数，这里写几
+}
+
+function UTCTransformMD(value) {//月日
+  var Time = getDate(value)
+  var Day = Time.getDate() > 9 ? Time.getDate() : "0" + Time.getDate()
+  var Month = (Time.getMonth() + 1) > 9 ? Time.getMonth() + 1 : "0" + (Time.getMonth() + 1)
+  return Month+'月'+Day
+}
+function UTCTransformMDHM(value) {//月日时分
+  value = value+'+08:00'
+  var Time = getDate(value)
+  console.log(value);
+  var Day = Time.getDate() > 9 ? (Time.getDate()) : "0" + (Time.getDate());
+  var Month = (Time.getMonth() + 1) > 9 ? (Time.getMonth() + 1) : "0" + (Time.getMonth() + 1);
+  var Hours = Time.getHours() > 9 ? (Time.getHours()) : "0" + (Time.getHours());
+  var Minutes = Time.getMinutes() > 9 ? (Time.getMinutes()) : "0" + (Time.getMinutes());
+  return Month + '月' + Day + '号' + Hours + ":" + Minutes
+  // return Month + '月' + Day + '号'
+}
+
+function compare(value) {//比较时间戳
+  // console.log(value)
+  // var timestamp = (new Date()).valueOf();
+  var Day = value.split('T')[0].split('-')[2];
+  var Month = value.split('T')[0].split('-')[1];
+  var years = value.split('T')[0].split('-')[0];
+  var Hours = value.split('T')[1].split(':')[0];
+  var Minutes = value.split('T')[1].split(':')[1];
+  var valueStamp = getDate(years + '/' + Month + '/' + Day + ' ' + Hours + ':' + Minutes+':'+ '00').getTime();
+
+  // console.log(valueStamp);
+  // var Day = Time.getDate() > 9 ? Time.getDate() : "0" + Time.getDate()
+  // var Month = Time.getMonth() + 1
+  // var Hours = Time.getHours() > 9 ? Time.getHours() : "0" + Time.getHours()
+  // var Minutes = Time.getMinutes() > 9 ? Time.getMinutes() : "0" + Time.getMinutes()
+
+  // return Month + '月' + Day + '号' + Hours + ":" + Minutes
+  return valueStamp;
+}
+
+function shoppTotalPrices(allArray) {//计算总价
+  var totalPrices = 0;
+  allArray.forEach(function(item, index){
+    if (item.dataList) {
+      item.dataList.forEach(function(leftItem, leftIndex){
+        leftItem.menuDishes.forEach(function(rightItem, rightIndex){
+          totalPrices += rightItem.dishesPrice * rightItem.shopNumber
+        })
+      })
+    }
+  })
+  return totalPrices.toFixed(2)
+}
+function orderStatus(status) {//订单状态
+  var statusArray=[
+    {
+      status:"Paided",
+      name:"已付款"
+    },
+    {
+      status: "Compvared",
+      name: "已取餐"
+    },
+    {
+      status: "Canceled",
+      name: "已取消"
+    },
+    {
+      status: "Expired",
+      name: "已过期"
+    },
+    {
+      status: "Transferred",
+      name: "已转让"
+    },
+    {
+      status: "Completed",
+      name: "已完成"
+    }
+  ]
+
+  // var orderStatus =statusArray.find(function (item){
+  //   console.log(item)
+  //   console.log(status)
+  //   if (item.status == status){
+  //     return item.name
+  //   }
+  // })
+  var orderStatus=""
+  for (var i = 0; i < statusArray.length;i++){
+    if (statusArray[i].status == status){
+      orderStatus = statusArray[i].name;
+      break;
+    }
+  }
+ 
+  return orderStatus
+}
+
+module.exports = {
+  UTCTransformMD: UTCTransformMD,
+  shoppTotalPrices: shoppTotalPrices,
+  orderStatus: orderStatus,
+  UTCTransformMDHM: UTCTransformMDHM,
+  UTCTransformYMDHMS: UTCTransformYMDHMS,
+  UTCTransformHM: UTCTransformHM,
+  toFix: toFix,
+  compare: compare
+}

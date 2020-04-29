@@ -1,0 +1,155 @@
+/* pages/orderList/orderList.wxss */
+page{
+  width:100%;
+  height:100%;
+  background: #F1F1F1
+}
+.orderListWrap{
+  height:100%;
+}
+.orderListWrap .noneOrder image{
+  width:673rpx;
+  height:604rpx;
+  display: block;
+  margin:60rpx auto
+}
+.noneOrder .text{
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 100rpx;
+}
+
+.orderListWrap scroll-view{
+   width:100%;
+   height:100%;
+   position:absolute;
+   left:0;
+   right:0;
+   bottom:0;
+   top:0;
+}
+
+.orderListWrap .data .dataList{
+  font-size:28rpx;
+  line-height: 46rpx;
+  padding:10rpx 0;
+}
+
+.orderListWrap .data .dataList .number{
+ text-align: right
+}
+.orderListWrap .list{
+  padding:0rpx  30rpx;
+  background: #fff;
+  border-radius:15rpx;
+  margin:20rpx 30rpx;
+}
+.orderListWrap .list .listMain .data .timeWrap{
+    padding-top:20rpx;
+    font-size: 26rpx;
+    line-height: 46rpx;
+}
+
+
+.orderListWrap .list .timeOrderNo{
+  font-size:28rpx;
+  /* line-height: 75rpx; */
+  color:#999999;
+  border-bottom:1rpx solid #F1F1F1;
+  /* flex-direction: column; */
+  align-items: center;
+}
+.orderListWrap .list .timeOrderNo .title{
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 20rpx;
+}
+.orderListWrap .list .timeOrderNo .title view{
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+.orderListWrap .list .timeOrderNo .status{
+  left: 0.2
+}
+.orderListWrap .list .timeOrderNo .status .notUse{
+color: #FFA439;
+}
+.orderListWrap .list .timeOrderNo .status .hasUse{
+  color: #FF3939;
+
+}
+.orderListWrap .list .timeOrderNo .status .invalid{
+color: #999999;
+}
+.orderListWrap .list .timeOrderNo .status .cancel{
+color: #999999;
+}
+.orderListWrap .list .timeOrderNo .status .assign{
+color: #FF3939;
+}
+.orderListWrap .list .listMain{
+  padding:10rpx 0;
+  align-items: center;
+}
+
+.orderListWrap .list .listMain .line{
+  margin:0 40rpx;
+  width:2rpx;
+  height:60rpx;
+  background:#E1E1E1;
+}
+
+.orderListWrap .list .listMain .imgWrap{
+  position: relative;
+   /* padding-left:30rpx;
+   border-left:1rpx solid #E1E1E1 */
+}
+.orderListWrap .list .listMain .imgWrap image{
+  width:78rpx;
+  height:78rpx;
+
+}
+.orderListWrap .list .listMain .imgWrap .mark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 78rpx;
+  width: 78rpx;
+  background-color: rgba(255, 255, 255, .8);
+}
+.orderListWrap .list .listMain .imgWrap view{
+  font-size: 26rpx;
+  line-height: 54rpx;
+  text-align: center
+}
+
+.orderListWrap .list .operationWrap{
+  border-top:1rpx solid #F1F1F1;
+  font-size:24rpx;
+  line-height: 40rpx;
+  padding:14rpx 0;
+  align-items: center;
+}
+.orderListWrap .list .operationWrap .displayFlex .operationTime text{
+  color:#999999;
+}
+.orderListWrap .list .operationWrap .displayFlex view.type{
+  color:#FFC843;
+  border:1rpx solid #FFC843;
+  height: 35rpx;
+  line-height: 35rpx;
+  padding:0 8rpx;
+  /* font-size:20rpx; */
+  border-radius:5px;
+  margin-left:20rpx;
+}
+.orderListWrap .list .operationWrap .buttonWrap{
+  font-size: 24rpx;
+  color:#666666;
+  border:1rpx solid #B3B3B3;
+  line-height: 40rpx;
+  height:40rpx;
+  padding:0 26rpx;
+  border-radius:8rpx;
+}

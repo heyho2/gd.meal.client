@@ -1,0 +1,77 @@
+<view class="confirmation">
+    <view class="orderDetails">
+      <view class="listWrap">
+
+
+        <block wx:for="{{storageAllMenuList}}" wx:key="{{index}}">
+          <block wx:for="{{item.dataList}}" wx:key="{{leftIndex}}" wx:for-item="leftItem" wx:for-index="leftIndex" wx:if="{{leftItem.all}}"> 
+             
+              <!-- <block wx:for="{{leftItem.menuDishes}}" wx:for-index="rightIndex" wx:key="{{rightIndex}}" wx:for-item="rightItem" wx:if="{{rightItem.shopNumber>0}}"> 
+               
+                <view class="list displayFlex">
+                  <view class="name">{{filter.UTCTransformMD(item.bookingDeadline)}}-{{leftItem.categoryName}}-{{rightItem.dishesName}}</view>
+                  <view class="number flex1">{{rightItem.shopNumber}}</view>
+                 <view class="price flex1">${{rightItem.dishesPrice}}</view>
+                </view>
+              </block> -->
+
+
+              
+            <view class="dataList">
+                <view class="displayFlex timeWrap">
+                  <view class="type">{{leftItem.categoryName}}</view>  <image src='../../images/time.png'></image>
+                  <view class="time"><text>{{filter.UTCTransformMD(leftItem.repastTime)}}</text><text>   {{leftItem.mealStartTime}}</text>-<text>{{leftItem.mealEndTime}}</text></view>
+                  
+                </view>
+                <block wx:for="{{leftItem.menuDishes}}" wx:for-index="rightIndex" wx:key="{{rightIndex}}" wx:for-item="rightItem" wx:if="{{rightItem.shopNumber>0}}"> 
+               
+                  <view class="list displayFlex">
+                    <view class="name">{{rightItem.dishesName}}</view>
+                    <view class="number flex1">X {{rightItem.shopNumber}}</view>
+                  <view class="price flex1">￥{{filter.toFix(rightItem.dishesPrice)}}</view>
+                  </view>
+                  
+                </block>
+            </view>
+
+
+          </block>
+        </block>
+
+          <!-- <view class="list displayFlex">
+            <view class="name">小炒肉</view>
+            <view class="number flex1">1</view>
+            <view class="price flex1">$20.00</view>
+          </view> -->
+        </view>    
+        <view class="all">
+          共计 <text>￥{{filter.shoppTotalPrices(storageAllMenuList)}}</text>
+        </view>
+    </view>
+
+
+    <view class="payMode">
+        <view class="title">支付方式</view>
+        <view class="payModeList displayFlex">
+          <view class="img">
+              <image src='../../images/balancePay.png'></image>
+          </view>
+          <view class="text">余额支付</view>
+          <view class="type flex1">钱包余额 ￥{{balanceTotal}}</view>
+        </view>
+    </view>
+
+    <view class="payWrap displayFlex">
+      <view class="payMoney flex1">实际支付 <text>￥{{filter.shoppTotalPrices(storageAllMenuList)}}</text></view>
+      <view class="buttonWrap">
+        <button bindtap='payBalance'>
+          立即支付
+        </button>
+      </view>
+    </view>
+
+
+</view>
+
+<!-- 导入过滤器 -->
+<wxs module="filter" src="../../utils/filter/filter.wxs"></wxs>

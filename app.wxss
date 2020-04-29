@@ -1,0 +1,112 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+
+
+
+
+/* 文字超出显示省略号 */
+.lineEllipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.line1{
+	  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.line2.lineEllipsis{
+	-webkit-line-clamp:2;
+}
+.line3.lineEllipsis{
+	-webkit-line-clamp:3;
+}
+.line4.lineEllipsis{
+	-webkit-line-clamp:4;
+}
+.line5.lineEllipsis{
+	line-clamp:5;
+}
+
+
+.displayFlex{
+  display:flex;
+  display:-webkit-flex;
+  display:-moz-flex;
+  display:-ms-flex;
+}
+.flex1{
+	flex:1;
+	-webkit-flex:1;
+	-moz-flex:1;
+	-ms-flex:1;
+}
+
+
+
+.floatLeft{
+	float:left;
+}
+.floatRight{
+	float:right
+}
+
+.clearfix:after{
+  content: ""; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;  
+}
+
+/* 居中 */
+.justify-content{
+	-webkit-justify-content: center;
+  	-moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+}
+
+/* 居右 */
+.justify-end{
+	-webkit-justify-content: flex-end;
+  	-moz-justify-content: flex-end;
+    -ms-justify-content: flex-end;
+    -o-justify-content: flex-end;
+    justify-content: flex-end
+}
+
+
+
+
+/* 水平显示 */
+.flex-direction-row{
+	-webkit-flex-direction:row;
+	-moz-flex-direction:row;
+	-ms-flex-direction:row;
+	flex-direction:row
+}
+/* 垂直 */
+.flex-direction-column{
+	-webkit-flex-direction:column;
+	-moz-flex-direction:column;
+	-ms-flex-direction:column;
+	flex-direction:column
+}
+
+::--webkit-scrollbar{
+	width: 0;
+	height: 0;
+	color: transparent;
+}
+

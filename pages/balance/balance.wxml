@@ -1,0 +1,76 @@
+<view class="balance">
+
+  <scroll-view
+  scroll-y
+  bindscrolltoupper="upper"
+  bindscrolltolower="lower"
+  bindscroll="scroll"
+  bindscrolltolower="searchScrollLower"
+  >
+
+
+    <view class="allData ">
+
+      <view class="allBalance">
+          <image src='../../images/balanceWallet.png'></image>
+          <view class="number">{{filter.toFix(walletData.totalBalance)}}</view>
+          <view class="text">钱包余额(￥)</view>
+      
+      </view>
+
+      <view class="displayFlex totalBalanceWrap" wx:if="{{walletData.isInternal}}">
+        <view class="left flex1 displayFlex justify-content">
+            <view class="name"> <image src='../../images/balanceRecharge.png'></image></view>
+            <view class="valueWrap">
+                   <view class="value">{{filter.toFix(walletData.grantBalance)}}</view>
+                    <view class="text">赠款余额(￥)</view>
+            </view>
+        </view>
+        <view class="right flex1 displayFlex justify-content">
+             <view class="name"> <image src='../../images/balanceGive.png'></image></view>
+            <view class="valueWrap">
+                   <view class="value">{{filter.toFix(walletData.rechargeBalance)}}</view>
+                    <view class="text">充值余额(￥)</view>
+            </view>
+        </view>
+      </view>
+
+
+    </view>
+
+
+    <view class="recordWrap">
+        <view class="title">交易记录</view>
+        <block wx:if="{{balanceData && balanceData.length>0}}">
+        <view class="list" wx:for="{{balanceData}}">
+            <view class="nameWrap displayFlex">
+                <view class="name">{{item.accountDetailDescription}}</view>
+                <view class="price flex1 right">{{item.accountDetailIncomeType==1?"-":"+"}}{{filter.toFix(item.accountDetailFee)}}</view>
+            </view>
+            <view class="timeWrap displayFlex">
+                <view class="time">{{filter.UTCTransformYMDHMS(item.creationDate)}}</view>
+                <view class="price flex1 right" wx:if="{{item.remark}}">订单编号：{{item.remark}}</view>
+            </view>
+       
+        </view>
+
+        </block>
+        
+      <view class="noneBalance" wx:else>
+        <!-- <view class="text">暂无数据</view> -->
+        <image src='../../images/noneBalance.png'></image>
+
+      </view>
+    
+    </view>
+
+</scroll-view>
+
+
+
+
+
+</view>
+
+<!-- 导入过滤器 -->
+<wxs module="filter" src="../../utils/filter/filter.wxs"></wxs>

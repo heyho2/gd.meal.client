@@ -1,0 +1,117 @@
+page,.balance{
+  height:100%;
+  background: #F1F1F1
+}
+.balance .noneBalance image{
+  width:673rpx;
+  height:604rpx;
+  display: block;
+  margin:0 auto
+}
+page .balance scroll-view{
+   width:100%;
+   height:100%;
+   position:absolute;
+   left:0;
+   right:0;
+   bottom:0;
+   top:0;
+}
+
+.balance .allData .allBalance image{
+  width:90rpx;
+  height:90rpx;
+  display: block;
+  margin:0 auto
+}
+.balance .allData{
+  background: #fff;
+  padding-top:20rpx;
+}
+.balance .allData .allBalance{
+  text-align: center;
+  padding-bottom: 10rpx;
+
+}
+.balance .allData .allBalance .number{
+  padding-top:40rpx;
+  font-size: 46rpx;
+  line-height: 60rpx;
+  color:#333333
+}
+.balance .allData .allBalance .text{
+   font-size: 24rpx;
+  line-height: 36rpx;
+  color:#999999
+}
+.balance .allData .totalBalanceWrap{
+  padding:10rpx 0 20rpx;
+}
+.balance .allData .totalBalanceWrap .flex1 .name image{
+  display:block;
+  width:70rpx;
+  height:70rpx;
+  margin:0 auto
+}
+.balance .allData .totalBalanceWrap .valueWrap{
+  padding-left:20rpx;
+}
+.balance .allData .totalBalanceWrap .valueWrap .value{
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color:#333333;
+  text-align: center
+}
+.balance .allData .totalBalanceWrap .valueWrap .text{
+    font-size: 24rpx;
+  line-height: 32rpx;
+  color:#999999
+}
+
+
+.balance .allData .left{
+    font-size:28rpx;
+    line-height: 46rpx;
+    padding:0 20rpx;
+    border-right:1rpx solid #eee
+}
+.balance .allData .left .value{
+  font-size:46rpx;
+  line-height: 80rpx
+}
+.balance .allData .right {
+  font-size:30rpx;
+  line-height: 60rpx;
+  padding-left:20rpx;
+}
+.balance .recordWrap{
+  padding-top:20rpx;
+}
+.balance .recordWrap .title{
+   font-size: 28rpx;
+   line-height: 60rpx;
+   text-align: left;
+   padding-left:30rpx;
+   color:#666666
+}
+.balance .recordWrap .right{
+  text-align: right
+}
+.balance .recordWrap .list{
+  padding:10rpx 20rpx;
+  font-size:28rpx;
+  line-height: 56rpx;
+  border-bottom:1rpx solid #eee;
+  background:#fff;
+}
+.balance .recordWrap .list .nameWrap .name{
+  font-size: 28rpx;
+  color:#333333
+}
+.balance .recordWrap .list .nameWrap .price{
+  color:#FF4040;
+   font-size: 32rpx;
+}
+.balance .recordWrap .list .timeWrap{
+  color:#999999
+}

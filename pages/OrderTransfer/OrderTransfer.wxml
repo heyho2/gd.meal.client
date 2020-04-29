@@ -1,0 +1,76 @@
+<view class="confirmation">
+
+
+
+
+    <view class="orderDetails">
+
+
+      <view class="transferHint ">
+        <view class="hintMain displayFlex">
+          <view class="img">
+            <image src='../../images/testImg/01.jpg'></image>
+          </view>
+          <view class="text">
+              请确认是否接受该订单转让？如确定，请支付，该订单将转让到您的账户订单中心.
+          </view>
+        </view>
+      </view>
+
+
+
+
+
+      <view class="listWrap">
+
+        <view class="title">订单详情</view>
+              
+            <view class="dataList">
+                <view class="displayFlex timeWrap">
+                  <!-- <view class="type">{{transferData.mealStartTime}}</view>   -->
+
+                    <view class="icon">
+                        <image src='../../images/foodType.png'></image>
+                    </view>  
+                  <view class="time"> {{filter.UTCTransformMDHM(transferData.mealStartTime)}}-{{filter.UTCTransformHM(transferData.mealEndTime)}} </view>
+                 
+                </view>
+                <block wx:for="{{transferData.dishees}}"  wx:key="{{index}}"> 
+               
+                  <view class="list displayFlex">
+                    <view class="name">{{item.dishesName}}</view>
+                    <view class="number flex1">{{item.quantity}}</view>
+                  <view class="price flex1">￥{{item.unitPrice}}</view>
+                  </view>
+                  
+                </block>
+                
+            </view>
+
+          
+       
+ <view class="all">
+          共计 <text>￥{{transferData.totalPrice}}</text>
+        </view>
+          <!-- <view class="list displayFlex">
+            <view class="name">小炒肉</view>
+            <view class="number flex1">1</view>
+            <view class="price flex1">$20.00</view>
+          </view> -->
+        </view>    
+    </view>
+
+    <view class="payWrap displayFlex">
+      <view class="payMoney flex1">实际支付 <text>￥{{transferData.totalPrice}}</text></view>
+      <view class="buttonWrap">
+        <button bindtap='payBalance'>
+          立即支付
+        </button>
+      </view>
+    </view>
+
+
+</view>
+
+<!-- 导入过滤器 -->
+<wxs module="filter" src="../../utils/filter/filter.wxs"></wxs>

@@ -1,0 +1,449 @@
+
+page,.home{
+  /* height:100% */
+}
+.home .titleList{
+  width:630rpx;
+  margin:20rpx auto;
+  padding:30rpx;
+  /* box-shadow: 0 0 10rpx #ccc;
+  border-radius: 15rpx; */
+  background: url("http://f.gd-doctor.com/images/2019/06/indexBG.png");
+  background-size: 100% 100%;
+}
+.loginOut{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+  font-size: 24rpx;
+  color: #cdcdcd;
+  padding-right: 30rpx;
+  background-color: #fff;
+  /* border-bottom: 1px solid #333; */
+  /* background-image: url(../); */
+}
+.loginOut view{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100rpx;
+}
+.loginOut image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 5px;
+}
+.home .titleList .list{
+  text-align: center;
+   font-size: 26rpx;
+   line-height: 40rpx
+}
+.home .titleList .list .head{
+  display:block;
+  width:80rpx;
+  height:80rpx;
+  border-radius: 50%;
+  margin:0 auto
+} 
+.home .titleList .list .name{
+  color:#666666;
+}
+.home .titleList .list .value{
+  color:#333333;
+  font-size: 32rpx;
+  font-weight: 700
+}
+
+/* 时间选择 */
+.home .timeSelect{
+    width:100%;
+    margin:0rpx auto;
+    white-space:nowrap
+}
+.home .timeSelect .timeWrap scroll-view{
+  width:100%;
+}
+.home .timeSelect .name{
+  display:block;
+  color:#333333;
+  font-size:32rpx;
+  line-height: 46rpx;
+  padding:0 30rpx;
+  text-align: left;
+  font-family: PingFangSC-Medium;
+	font-weight: bold;
+}
+.home .timeSelect .timeWrap .time{
+  display:inline-block;
+  font-size:32rpx;
+  color:#999999;
+  line-height: 58rpx;
+  padding:0 30rpx 20rpx 30rpx;
+  text-align: center;
+  /* border:1px solid #D9D9D9 */
+  
+}
+.home .timeSelect .timeWrap .time.active{
+  color:#FFC73A;
+}
+.home .timeSelect .timeWrap .time.active .borderBottom{
+  display: block;
+  width:60rpx;
+  height:4rpx;
+  background: #FFC843;
+  margin:0 auto
+}
+
+
+/*菜品大类*/
+
+.home .menuListWrap{
+  position: fixed;
+  left:0;
+  bottom:100rpx;
+  right:0;
+  top:320rpx;
+  border-top:1rpx solid #eee
+
+}
+
+.home .menuListWrap .listTitle{
+  padding:6rpx 12rpx;
+  background: #F1F1F1;
+  margin:20rpx 38rpx 20rpx 20rpx;
+  border-radius: 20rpx;
+	color: #666666;
+}
+.home .menuListWrap .listTitle image{
+  width:40rpx;
+  height:40rpx;
+  
+}
+.home .menuListWrap .listTitle text{
+  font-size:20rpx;
+  line-height: 40rpx;
+  height:40rpx;
+  padding-left:10rpx;
+}
+
+
+.home .menuListWrap .classList{
+  width:200rpx;
+  min-width: 200rpx;
+  height:100%;
+  text-align: center;
+  background: #eee
+}
+.home .menuListWrap .classList .list{
+  /* font-size:30rpx;
+  line-height: 100rpx; */
+  background: #eee;
+  padding:30rpx 0;
+  border-left:4rpx solid #F1F1F1;
+}
+.home .menuListWrap .classList .list image{
+  display:block;
+  width:50rpx;
+  height:50rpx;
+  margin: auto
+}
+.home .menuListWrap .classList .list .name{
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color:#333333;
+}
+.home .menuListWrap .classList .list.active{
+  background:#fff;
+  border-left:4rpx solid #FFC843;
+}
+
+/*菜品小类  */
+.home .menuListWrap .menuList {
+  padding-left:20rpx;
+  width:530rpx;
+  max-width: 530rpx
+}
+.home .menuListWrap .menuList .list{
+  padding:20rpx;
+  /* border-bottom:1rpx solid #eee */
+}
+.home .menuListWrap .menuList .list .img{
+  width:120rpx;
+  height:120rpx;
+}
+
+.home .menuListWrap .menuList .list .img image{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.home .menuListWrap .menuList .list .details{
+  padding-left:20rpx;
+}
+.home .menuListWrap .menuList .list .details .title{
+  font-size: 28rpx;
+  line-height: 40rpx;
+  font-weight: 700
+}
+.home .menuListWrap .menuList .list .details .text{
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color:#ccc;
+  width:340rpx;
+}
+.home .menuListWrap .menuList .list .details .priceWrap{
+  font-size:32rpx;
+  line-height: 40rpx;
+  padding-top:8rpx
+}
+.home .menuListWrap .menuList .list .details .priceWrap .price{
+  color:red
+}
+.home .menuListWrap .menuList .list .details .priceWrap .operationWrap image{
+  width:40rpx;
+  height:40rpx;
+}
+.home  .menuListWrap .menuList .list .details .priceWrap .operationWrap .number{
+  padding:0 10rpx;
+}
+
+/*底部购物车  */
+.shoppingTrolley{
+  position: fixed;
+  left:0rpx;
+  right:0rpx;
+  bottom:0;
+  z-index:999;
+  background: #fff;
+  padding:20rpx 40rpx;
+  border-radius: 40rpx 40rpx 0 0;
+  box-shadow: 0 0 10rpx #ccc;
+}
+.shoppingTrolley .wrap .img image{
+  display:block;
+  width:80rpx;
+  height:80rpx;
+}
+.shoppingTrolley .wrap .allPrice{
+  font-size:32rpx;
+  line-height: 80rpx;
+  color:red;
+  padding-left:20rpx;
+  font-weight: 500
+}
+.shoppingTrolley .wrap .settleAccounts{
+  font-size: 30rpx;
+  line-height: 60rpx;
+  background: #FFC843;
+  color:#333333;
+  font-weight: 500;
+  height:60rpx;
+  width:150rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  margin-top:10rpx;
+}
+
+
+/*弹窗 */
+.shoppingListWrap{
+  position: absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:100rpx;
+  
+}
+.shoppingListWrap .shoppingListMainMask{
+    position: absolute;
+    left:0;
+    bottom:0rpx;
+    right:0;
+    top:0;
+    background: rgba(000, 000, 000, .6)
+}
+
+.shoppingListWrap .shoppingListMain{
+  position: absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  background: #fff;
+  
+}
+.shoppingListWrap .shoppingListMain .listWrap{
+   max-height: 600rpx;
+   overflow: auto;
+   padding:0 30rpx;
+}
+.shoppingListWrap .shoppingListMain .listTitle{
+  text-align: center;
+  font-size:30rpx;
+  line-height: 80rpx;
+  background: #fff
+}
+.shoppingListWrap .shoppingListMain .shoppingList{
+  font-size: 30rpx;
+  line-height: 48rpx;
+  padding:18rpx 20rpx 24rpx 20rpx;
+  border-bottom:1rpx solid #F1F1F1
+}
+.shoppingListWrap .shoppingListMain .shoppingList .list .price{
+  /* flex: 0.2; */
+  color:#FF3E3E
+}
+
+.shoppingListWrap .shoppingListMain .shoppingList .list .name .timeWrap{
+  font-size:24rpx;
+  line-height: 40rpx;
+  color:#FFC843;
+  margin-top:10rpx;
+}
+.shoppingListWrap .shoppingListMain .shoppingList .list .name .timeWrap view{
+  border:1rpx solid #FFC843;
+ padding:0 10rpx;
+  margin-right:20rpx;
+  border-radius:5px;
+  text-align: center
+}
+
+
+
+.shoppingListWrap .shoppingListMain .shoppingList .list .operationWrap image.img{
+    display:block;
+    width:48rpx;
+    height:48rpx
+}
+.shoppingListWrap .shoppingListMain .shoppingList .list .operationWrap .number{
+  padding:0 10rpx;
+}
+
+/* 商品详情 */
+.shoppingListWrap .commodityDetails{
+  padding:60rpx 30rpx 30rpx 30rpx;
+  position: absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  background: #fff;
+  border-radius: 40rpx 40rpx 0 0;
+}
+.shoppingListWrap .commodityDetails image.closeImg{
+  width:50rpx;
+  height:50rpx;
+  position:absolute;
+  right:20rpx;
+  top:20rpx;
+}
+.shoppingListWrap .commodityDetails image.mianImg{
+  display: block;
+  width:150rpx;
+  height:150rpx;
+  margin:20rpx auto
+}
+.shoppingListWrap .commodityDetails view.name{
+  font-size: 36rpx;
+  line-height: 60rpx;
+  color:#333333;
+  font-weight:500;
+}
+.shoppingListWrap .commodityDetails view.Details{
+  padding-top:20rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color:#999999
+}
+.shoppingListWrap .commodityDetails view.price{
+  font-size: 32rpx;
+  line-height: 56rpx;
+  color:#FF3E3E
+}
+.shoppingListWrap .commodityDetails view.operationWrap image{
+  width:40rpx;
+  height:40rpx;
+}
+.shoppingListWrap .commodityDetails view.operationWrap .number{
+  line-height: 40rpx;
+  padding:0 10rpx;
+}
+
+/* 编辑 */
+.shoppingListWrap  .editName{
+  padding:0rpx 30rpx 30rpx 30rpx;
+  position: absolute;
+  left:0;
+  bottom:-100rpx;
+  right:0;
+  background: #fff;
+  border-radius: 8rpx 8rpx 0 0;
+  z-index:9999
+}
+.shoppingListWrap  .editName .top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.shoppingListWrap  .editName .closeImg{
+  width:50rpx;
+  height:50rpx;
+  position:absolute;
+  right:20rpx;
+  top:20rpx;
+}
+.shoppingListWrap  .editName .title{
+  display: flex;
+  align-items: center;
+  font-size: 25rpx;
+  line-height: 56rpx;
+  color: #333333;
+  text-align: left;
+  padding-top:20rpx;
+  width: 200rpx;
+}
+.shoppingListWrap  .editName .title image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 5px;
+}
+
+
+.shoppingListWrap  .editName .inputWrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 500rpx;
+  height: 50rpx;
+  font-size: 30rpx;
+  border: 1px solid #999;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 8rpx;
+}
+.shoppingListWrap  .editName .inputWrap text{
+  flex: 1;
+  padding-left: 20rpx;
+  font-size: 22rpx;
+}
+.shoppingListWrap  .editName .inputWrap input {
+  flex: 1;
+    text-align: right;
+    font-size: 22rpx;
+    /* line-height: 46rpx; */
+    color:#666;
+    padding-right: 10px;
+    /* border-bottom:1rpx solid #B3B3B3 */
+}
+.shoppingListWrap  .editName .editNameButton{
+  font-size: 24rpx;
+  line-height:60rpx;
+  width:160rpx;
+  margin:20rpx auto;
+  background: #FFC843;
+  color:#333333;
+  border:0
+}

@@ -1,0 +1,49 @@
+<view class="loginMain">
+  <view class="loginWrap">
+
+      <view class="title"> <text class="texts">登录订餐</text><text class="line"></text></view>
+
+
+      <view class="loginList account displayFlex">
+        <!-- <image src='../../images/phone.png'></image> -->
+         <text class="name">手机号</text>
+        <input class="flex1" 
+           type ="number"
+           placeholder="请输入手机号码" 
+           placeholder-class="placeholder" 
+           data-name="loginData.phone"
+           value='{{loginData.phone}}'
+           bindinput="inputgetName"
+           ></input>
+      </view>
+
+      <view class="loginList account displayFlex">
+        <!-- <image src='../../images/password.png'></image> -->
+         <text class="name">密码</text>
+        <input class="flex1" 
+           placeholder="请输入密码" 
+           placeholder-class="placeholder" 
+           data-name="loginData.passWord"
+           value='{{loginData.passWord}}'
+           bindinput="inputgetName"
+           password
+           ></input>
+        <navigator class="forgetPsw" url="../resetPasswords/resetPasswords" hover-class="navigator-hover">忘记密码</navigator>
+      </view>
+
+      <view class="buttonWrap">
+        <button
+        plain 
+          size="default"
+          bindtap="default"
+          hover-class="other-button-hover"
+          bindtap='login'
+        >
+         登录
+        </button>
+        <navigator class="text" url="../register/register" hover-class=' '>手机快速注册</navigator>
+      </view>
+  </view>
+
+
+</view>

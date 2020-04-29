@@ -1,0 +1,90 @@
+/* pages/login/login.wxss */
+page{
+  width:100%;
+  height:100%;
+  background: url("http://f.gd-doctor.com/images/2019/06/loginBG.png");
+  background-size:100% 100%
+}
+
+.loginMain .loginWrap{
+  padding:20rpx 30rpx;
+}
+.loginMain .loginWrap .title{
+  font-size:36rpx;
+  line-height: 40rpx;
+  font-weight:700;
+  color:#333333;
+  position:relative;
+  margin:60rpx 0
+}
+.loginMain .loginWrap .title .texts{
+   position:relative;
+   z-index:99
+}
+.loginMain .loginWrap .title .line{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:140rpx;
+  height:10rpx;
+  background: #FFC843;
+  border-radius: 5px;
+  z-index:0
+}
+
+
+.loginMain .loginWrap .loginList{
+  padding:20rpx 30rpx;
+  /* position: relative; */
+  border-bottom:1rpx solid #E1E1E1;
+}
+.loginMain .loginWrap .loginList text.name{
+  font-size:28rpx;
+  line-height: 60rpx;
+  width:100rpx;
+  text-align: right;
+  padding-right:20rpx;
+  font-weight: 700
+}
+.loginMain .loginWrap .loginList image{
+  width:60rpx;
+  height:60rpx;
+  margin-right:20rpx;
+  /* position:absolute;
+  left:30rpx;
+  top:20rpx; */
+}
+.loginMain .loginWrap .loginList input{
+  font-size: 28rpx;
+  line-height: 60rpx;
+  height:60rpx;
+ 
+  
+}
+.loginMain .loginWrap .loginList .forgetPsw{
+  font-size:26rpx;
+  line-height: 60rpx;
+  padding:0 20rpx;
+  color:#999999;
+}
+
+
+.loginMain .buttonWrap{
+  padding:100rpx 0;
+}
+.loginMain .buttonWrap button{
+  background: #FFB932;
+  color:#333333;
+  font-size: 28rpx;
+  line-height: 88rpx;
+  border-radius: 44px;
+  border:0rpx;
+  font-weight: 700
+}
+
+.loginMain .text{
+  font-size:28rpx;
+  line-height: 100rpx;
+  color:#333333;
+  text-align: center
+}

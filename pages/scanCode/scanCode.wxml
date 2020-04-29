@@ -1,0 +1,55 @@
+<view class="scanCode">
+	<view class="codeWrap" wx:if="{{showType==1}}">
+		<view class="codeMain">
+			<view class="codeText">
+				<view class="textLeft displayFlex">
+					<image src='../../images/scanIcon.png'></image>
+					<text>向食堂展示</text>
+					<text class="repastCode">就餐码</text>
+				</view>
+
+			</view>
+			<view class="imgWrap">
+				<image src='{{imagePath}}'></image>
+			</view>
+			<view class="text">
+				<text class="time">使用时间：{{filter.UTCTransformMDHM(optionsData.mealStartTime)}}-{{filter.UTCTransformHM(optionsData.mealEndTime)}}</text>
+				<text class="name">{{optionsData.categoryname}}</text>
+			</view>
+		</view>
+
+	</view>
+	<view class="codeWrap" wx:if="{{showType==2 && transferData}}">
+		<view class="codeMain">
+			<view class="codeText">
+				<view class="textLeft displayFlex">
+					<image src='../../images/scanIcon.png'></image>
+					<text>向朋友展示</text>
+					<text class="repastCode">转让码</text>
+				</view>
+			</view>
+			<view class="imgWrap">
+				<image src='{{transferData.transferedCodeImg}}'></image>
+			</view>
+			<view class="text">
+				<text class="time">使用时间：{{filter.UTCTransformMDHM(transferData.mealStartTime)}}-{{filter.UTCTransformHM(transferData.mealEndTime)}}</text>
+				<text class="name">{{transferData.categoryName}}</text>
+			</view>
+		</view>
+		<view class="transferText">温馨提示：转让码可转让，截图给对方，对方扫码后，可选择是否接受转让，选择是的话，会扣除他的余额，恢复您的余额，同时您的订单码失效。</view>
+
+
+	</view>
+
+	<view class="buttonWrap clearfix">
+		<view class="transferButton" bindtap='transfer'>
+			{{showType==1?"切换到转让码":"切换到就餐码"}}
+		</view>
+	</view>
+</view>
+
+<view class="canvas-box">
+	<canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+</view>
+<!-- 导入过滤器 -->
+<wxs module="filter" src="../../utils/filter/filter.wxs"></wxs>

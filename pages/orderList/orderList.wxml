@@ -1,0 +1,65 @@
+<view class="orderListWrap">
+
+  <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" bindscrolltolower="searchScrollLower" wx:if="{{orderList && orderList.length>0}}">
+
+
+    <view url="../scanCode/scanCode?orderGuid={{item.orderGuid}}&&mealStartTime={{item.mealStartTime}}&&mealEndTime={{item.mealEndTime}}&&categoryName={{item.categoryName}}" class="list " wx:for="{{orderList}}" wx:key="index" >
+      <view data-orderGuid="{{item.orderGuid}}"
+      data-mealStartTime="{{item.mealStartTime}}" data-mealEndTime="{{item.mealEndTime}}" data-orderStatus="{{item.orderStatus}}" data-categoryName="{{item.categoryName}}" bindtap='consumeTransfer'>
+      <view class="timeOrderNo displayFlex">
+        <view class='title'>
+          <view>下单时间：{{ filter.UTCTransformYMDHMS(item.creationDate)}}</view>
+          <view>订单编号：{{item.orderNo}}</view>
+        </view>
+        <view class='status'>
+          <text class='notUse' wx:if="{{item.orderStatus == 'Paided'}}">未使用</text>
+          <text class='hasUse' wx:if="{{item.orderStatus == 'Completed'}}">已使用</text>
+          <text class='invalid' wx:if="{{item.orderStatus == 'Expired'}}">已失效</text>
+          <text class='cancel' wx:if="{{item.orderStatus == 'Canceled'}}">已取消</text>
+          <text class='assign' wx:if="{{item.orderStatus == 'Transferred'}}">已转让</text>
+        </view>
+      </view>
+      <view class="listMain displayFlex">
+        <view class="data flex1">
+          <view class="dataList displayFlex" wx:for="{{item.orderDetails}}" wx:for-item="orderDetailsItem">
+            <view class="name">{{orderDetailsItem.dishesName}}</view>
+            <view class="number flex1">x {{orderDetailsItem.quantity}}</view>
+          </view>
+          <view class="timeWrap displayFlex">
+            <view class="price flex1 displayFlex">
+              <view class="flex1">￥{{filter.toFix(item.totalPrice)}} </view>
+              <!-- <view class="flex1" style="text-align:right">订单状态：{{filter.orderStatus(item.orderStatus)}} </view> -->
+            </view>
+          </view>
+        </view>
+        <view class="line"></view>
+        <view class="imgWrap">
+          <image src='../../images/QRcode.png'></image>
+          <text class='mark' wx:if="{{item.orderStatus != 'Paided' }}"></text>
+          <view>就餐码</view>
+        </view>
+      </view>
+        </view>
+      <view class="operationWrap displayFlex">
+        <view class="flex1 displayFlex">
+          <view class="operationTime">
+            <text>使用时间：</text>{{filter.UTCTransformMDHM(item.mealStartTime)}}-{{filter.UTCTransformHM(item.mealEndTime)}} </view>
+          <view class="type">{{item.categoryName}}</view>
+        </view>
+        <view class="buttonWrap" bindtap='cancelOrder' wx:if="{{item.canCancel}}" data-orderGuid="{{item.orderGuid}}" data-orderStatus="{{item.orderStatus}}">取消订单</view>
+      </view>
+
+    </view>
+
+  </scroll-view>
+
+
+  <view class="noneOrder" wx:else>
+    <!-- <view class="text">暂无数据</view> -->
+    <image src='../../images/noneOrder.png'></image>
+
+  </view>
+
+</view>
+<!-- 导入过滤器 -->
+<wxs module="filter" src="../../utils/filter/filter.wxs"></wxs>

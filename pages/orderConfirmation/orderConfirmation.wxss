@@ -1,0 +1,140 @@
+page{
+  width:100%;
+  height:100%;
+  background: #F1F1F1;
+}
+.confirmation .flex1 .ruleList{
+  font-size: 26rpx;
+  line-height: 40rpx;
+  padding-bottom:10rpx;
+  color:#909090;
+}
+
+/*订单详情*/
+.orderDetails{
+  margin-top:20rpx;
+  background: #fff
+}
+.orderDetails .listWrap{
+    padding:0 30rpx;
+}
+.orderDetails .listWrap .dataList{
+  padding:16rpx 0
+}
+.orderDetails .listWrap .dataList .timeWrap{
+  align-items: center;
+}
+.orderDetails .listWrap .dataList .timeWrap .type{
+  font-size: 26rpx;
+  line-height: 40rpx;
+  height:40rpx;
+  color:#FFC843;
+  border:1rpx solid #FFC843;
+  padding:0 10rpx;
+  border-radius: 6rpx;
+}
+.orderDetails .listWrap .dataList .timeWrap .time{
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color:#999999;
+  padding-left:8rpx;
+}
+.orderDetails .listWrap .dataList .timeWrap image{
+  /* display: inline-block; */
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 5rpx;
+  margin-left: 15rpx;
+  /* vertical-align: middle; */
+}
+
+
+.orderDetails .listWrap .list{
+  font-size: 28rpx;
+  line-height: 50rpx;
+  text-align: right
+}
+.orderDetails .listWrap .list .name{
+  width:50%;
+  text-align: left;
+}
+
+
+.orderDetails .all{
+  border-top:1rpx solid #eee;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  text-align: right;
+  padding-right: 20rpx;
+}
+.orderDetails .all text {
+  color:#FF3E3E;
+  padding-left:30rpx;
+}
+
+
+/*支付方式*/
+.payMode{
+  background: #fff;
+  margin-top:20rpx;
+  padding:0 20rpx;
+}
+.payMode .title{
+  font-size: 28rpx;
+  line-height: 88rpx;
+  color:#333333;
+  border-bottom:1rpx solid #F5F5F5
+}
+ .payMode .payModeList{
+   padding:24rpx 0;
+ }
+.payMode .payModeList .img image{
+  display:block;
+  width:40rpx;
+  height:40rpx;
+}
+.payMode .payModeList .text{
+  font-size: 26rpx;
+  line-height: 40rpx;
+  padding-left:10rpx;
+}
+.payMode .payModeList  .type{
+  text-align: right;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color:#999999
+}
+
+
+/*支付  */
+.payWrap{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:20rpx;
+  background: #fff;
+  
+}
+.payWrap .payMoney{
+  font-size: 28rpx;
+  line-height: 60rpx;
+}
+.payWrap .payMoney text{
+  font-size: 30rpx;
+  color:#FF3E3E;
+  font-weight: 700
+}
+.payWrap .buttonWrap{
+  padding-left:50rpx;
+  width:200rpx;
+}
+.payWrap .buttonWrap button{
+  font-size: 32rpx;
+  line-height: 60rpx;
+  height:60rpx;
+  background: #FFC843;
+  font-weight: 700;
+  color:#333333;
+  border-radius: 40rpx;
+}
